@@ -249,7 +249,7 @@ const reducer = {
 };
 
 // Check if user is in local storage and create user object from that
-/*const userFromStorage = localStorage.getItem("token")
+const userFromStorage = localStorage.getItem("token")
   ? {
       token: localStorage.getItem("token"),
       isAuthenticated: true,
@@ -259,8 +259,8 @@ const reducer = {
       isAuthenticated: false,
       user: null,
       token: null,
-    };*/
-const token = localStorage.getItem("token");
+    };
+// const token = localStorage.getItem("token");
 
 // Initial state
 let initialState = {
@@ -272,8 +272,8 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },
-  // user: userFromStorage, // Initialized user state
-  auth: { token },
+  user: userFromStorage, // Initialized user state
+  // auth: { token },
 };
 
 // Create the Redux store with combined reducers, initial state, and middleware
