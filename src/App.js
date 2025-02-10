@@ -52,12 +52,35 @@ function App() {
 
   const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get(
-      "https://justore.onrender.com/api/v1/stripeapikey"
-    );
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get(
+  //     "https://justore.onrender.com/api/v1/stripeapikey"
+  //   );
 
-    setStripeApiKey(data.stripeApiKey);
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
+
+  async function getStripeApiKey() {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Send the token in the request header
+        },
+      };
+
+      const { data } = await axios.get(
+        "https://justore.onrender.com/api/v1/stripeapikey",
+        config
+      );
+
+      setStripeApiKey(data.stripeApiKey);
+    } catch (error) {
+      console.error(
+        "Error fetching Stripe API Key:",
+        error.response?.data || error
+      );
+    }
   }
 
   useEffect(() => {
