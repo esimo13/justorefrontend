@@ -35,39 +35,14 @@ import {
   orderReducer,
 } from "./reducers/orderReducer";
 // Persist configuration
-const persistConfig = {
-  key: "root", // Key to store the state in storage
-  storage, // Storage to use (localStorage)
-  whitelist: ["user", "cart"], // Only persist the user and cart state
-};
-
-// Combine all reducers
-// const reducer = {
-//   auctions: auctionsReducer,
-//   auctionDetails: auctionDetailsReducer,
-//   newAuction: newAuctionReducer,
-//   auction: auctionReducer,
-//   products: productsReducer,
-//   productDetails: productDetailsReducer,
-//   user: userReducer,
-//   profile: profileReducer,
-//   forgotPassword: forgotPasswordReducer,
-//   cart: cartReducer,
-//   newOrder: newOrderReducer,
-//   myOrders: myOrdersReducer,
-//   orderDetails: orderDetailsReducer,
-//   newReview: newReviewReducer,
-//   newProduct: newProductReducer,
-//   product: productReducer,
-//   allOrders: allOrdersReducer,
-//   order: orderReducer,
-//   allUsers: allUsersReducer,
-//   userDetails: userDetailsReducer,
-//   productReviews: productReviewsReducer,
-//   review: reviewReducer,
+// const persistConfig = {
+//   key: "root", // Key to store the state in storage
+//   storage, // Storage to use (localStorage)
+//   whitelist: ["user", "cart"], // Only persist the user and cart state
 // };
 
-const rootReducer = combineReducers({
+// Combine all reducers
+const reducer = {
   auctions: auctionsReducer,
   auctionDetails: auctionDetailsReducer,
   newAuction: newAuctionReducer,
@@ -90,11 +65,34 @@ const rootReducer = combineReducers({
   userDetails: userDetailsReducer,
   productReviews: productReviewsReducer,
   review: reviewReducer,
-});
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const rootReducer = combineReducers({
+//   auctions: auctionsReducer,
+//   auctionDetails: auctionDetailsReducer,
+//   newAuction: newAuctionReducer,
+//   auction: auctionReducer,
+//   products: productsReducer,
+//   productDetails: productDetailsReducer,
+//   user: userReducer,
+//   profile: profileReducer,
+//   forgotPassword: forgotPasswordReducer,
+//   cart: cartReducer,
+//   newOrder: newOrderReducer,
+//   myOrders: myOrdersReducer,
+//   orderDetails: orderDetailsReducer,
+//   newReview: newReviewReducer,
+//   newProduct: newProductReducer,
+//   product: productReducer,
+//   allOrders: allOrdersReducer,
+//   order: orderReducer,
+//   allUsers: allUsersReducer,
+//   userDetails: userDetailsReducer,
+//   productReviews: productReviewsReducer,
+//   review: reviewReducer,
+// });
 
-/*
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Check if user is in local storage and create user object from that
 const userFromStorage = localStorage.getItem("token")
@@ -109,7 +107,6 @@ const userFromStorage = localStorage.getItem("token")
       token: null,
     };
 
-
 // Initial state
 let initialState = {
   cart: {
@@ -121,7 +118,6 @@ let initialState = {
       : {},
   },
   user: userFromStorage, // Initialized user state
-  
 };
 
 // Create the Redux store with combined reducers, initial state, and middleware
@@ -130,16 +126,16 @@ const store = configureStore({
   preloadedState: initialState,
 });
 
-export default store; */
-
-const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false, // Avoid warnings for non-serializable actions in persist
-    }),
-});
-
-export const persistor = persistStore(store);
-
 export default store;
+
+// const store = configureStore({
+//   reducer: persistedReducer,
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({
+//       serializableCheck: false, // Avoid warnings for non-serializable actions in persist
+//     }),
+// });
+
+// export const persistor = persistStore(store);
+
+// export default store;
