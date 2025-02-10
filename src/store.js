@@ -249,17 +249,17 @@ const reducer = {
 };
 
 // Check if user is in local storage and create user object from that
-// const userFromStorage = localStorage.getItem("token")
-//   ? {
-//       token: localStorage.getItem("token"),
-//       isAuthenticated: true,
-//       user: {},
-//     }
-//   : {
-//       isAuthenticated: false,
-//       user: null,
-//       token: null,
-//     };
+/*const userFromStorage = localStorage.getItem("token")
+  ? {
+      token: localStorage.getItem("token"),
+      isAuthenticated: true,
+      user: {},
+    }
+  : {
+      isAuthenticated: false,
+      user: null,
+      token: null,
+    };*/
 const token = localStorage.getItem("token");
 
 // Initial state
