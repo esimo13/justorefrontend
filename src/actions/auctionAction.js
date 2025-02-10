@@ -29,10 +29,10 @@
 //     try {
 //       dispatch({ type: ALL_AUCTION_REQUEST });
 
-//       let link = `/api/v1/auctions?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+//       let link = `https://justore.onrender.com/api/v1/auctions?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 
 //       if (category) {
-//         link = `/api/v1/auctions?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+//         link = `https://justore.onrender.com/api/v1/auctions?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 //       }
 
 //       const { data } = await axios.get(link);
@@ -54,7 +54,7 @@
 //   try {
 //     dispatch({ type: ADMIN_AUCTION_REQUEST });
 
-//     const { data } = await axios.get("/api/v1/admin/auctions");
+//     const { data } = await axios.get("https://justore.onrender.com/api/v1/admin/auctions");
 
 //     dispatch({
 //       type: ADMIN_AUCTION_SUCCESS,
@@ -78,7 +78,7 @@
 //     };
 
 //     const { data } = await axios.post(
-//       `/api/v1/admin/auction/new`,
+//       `https://justore.onrender.com/api/v1/admin/auction/new`,
 //       auctionData,
 //       config
 //     );
@@ -105,7 +105,7 @@
 //     };
 
 //     const { data } = await axios.put(
-//       `/api/v1/admin/auction/${id}`,
+//       `https://justore.onrender.com/api/v1/admin/auction/${id}`,
 //       auctionData,
 //       config
 //     );
@@ -127,7 +127,7 @@
 //   try {
 //     dispatch({ type: DELETE_AUCTION_REQUEST });
 
-//     const { data } = await axios.delete(`/api/v1/admin/auction/${id}`);
+//     const { data } = await axios.delete(`https://justore.onrender.com/api/v1/admin/auction/${id}`);
 
 //     dispatch({
 //       type: DELETE_AUCTION_SUCCESS,
@@ -146,7 +146,7 @@
 //   try {
 //     dispatch({ type: AUCTION_DETAILS_REQUEST });
 
-//     const { data } = await axios.get(`/api/v1/auction/${id}`);
+//     const { data } = await axios.get(`https://justore.onrender.com/api/v1/auction/${id}`);
 
 //     dispatch({
 //       type: AUCTION_DETAILS_SUCCESS,

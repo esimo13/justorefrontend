@@ -61,6 +61,10 @@ const reducer = combineReducers({
   review: reviewReducer,
 });
 
+const userFromStorage = localStorage.getItem("token")
+  ? { token: localStorage.getItem("token") }
+  : null;
+
 let initialState = {
   cart: {
     cartItems: localStorage.getItem("cartItems")
@@ -70,6 +74,7 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },
+  user: userFromStorage,
 };
 
 const middleware = [thunk];

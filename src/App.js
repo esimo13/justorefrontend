@@ -11,7 +11,7 @@ import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store";
-import { loadUser } from "./actions/userAction";
+import { getUserDetails, loadUser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
@@ -46,7 +46,7 @@ import Auction from "./component/Auction/Auction";
 import NewAuction from "./component/Admin/NewAuction.js";
 import AuctionDetails from "./component/Auction/AuctionDetails.js";
 import AuctionList from "./component/Admin/AuctionList.js";
-
+import { useDispatch } from "react-redux";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
@@ -70,8 +70,10 @@ function App() {
       },
     });
 
+    const token = localStorage.getItem("token");
+
     // Dispatch the action if the component is still mounted
-    if (isMounted) {
+    if (token) {
       store.dispatch(loadUser());
     }
 
