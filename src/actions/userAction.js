@@ -133,8 +133,18 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
+    const token = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
     const { data } = await axios.get(`https://justore.onrender.com/api/v1/me`, {
-      withCredentials: true, // Ensure cookies are sent with the request
+      withCredentials: true,
+      config, // Ensure cookies are sent with the request
     });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
