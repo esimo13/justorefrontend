@@ -39,16 +39,39 @@ import {
 import axios from "axios";
 
 // Login
+// export const login = (email, password) => async (dispatch) => {
+//   try {
+//     dispatch({ type: LOGIN_REQUEST });
+
+//     const token = localStorage.getItem("token");
+
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       },
+//     };
+
+//     const { data } = await axios.post(
+//       `https://justore.onrender.com/api/v1/login`,
+//       { email, password },
+//       config
+//     );
+
+//     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+//     window.location.reload();
+//   } catch (error) {
+//     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
+//   }
+// };
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-    const token = localStorage.getItem("token");
-
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -58,7 +81,13 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
 
+    // Save the token to localStorage after a successful login
+    localStorage.setItem("token", data.token); // Assuming the token is returned in the `data.token` field
+
+    // Dispatch the login success action with user data
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+
+    // Optionally reload the page or redirect to a new route
     window.location.reload();
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
