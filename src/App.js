@@ -47,7 +47,6 @@ import NewAuction from "./component/Admin/NewAuction.js";
 import AuctionDetails from "./component/Auction/AuctionDetails.js";
 import AuctionList from "./component/Admin/AuctionList.js";
 import { useDispatch } from "react-redux";
-import { loadUser } from "./actions/userActions";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user || {});
 
