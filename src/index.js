@@ -15,12 +15,16 @@ const options = {
 };
 
 ReactDOM.render(
+  // <Provider store={store}>
+  //    <AlertProvider template={AlertTemplate} {...options}>
+  //     <App />
+  //   </AlertProvider>
+  // </Provider>,
   <Provider store={store}>
-    {/* <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider> */}
     <PersistGate loading={null} persistor={persistor}>
-      <App />
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
     </PersistGate>
   </Provider>,
   document.getElementById("root")
