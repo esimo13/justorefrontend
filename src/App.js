@@ -48,6 +48,7 @@ import AuctionDetails from "./component/Auction/AuctionDetails.js";
 import AuctionList from "./component/Admin/AuctionList.js";
 import { useDispatch } from "react-redux";
 function App() {
+  const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user || {});
 
   const [stripeApiKey, setStripeApiKey] = useState("");
