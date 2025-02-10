@@ -320,7 +320,7 @@ export const userReducer = (state = { user: null }, action) => {
     case LOAD_USER_REQUEST:
       return {
         loading: true,
-        isAuthenticated: false,
+        isAuthenticated: !!localStorage.getItem("token"),
       };
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
