@@ -63,6 +63,13 @@ function App() {
   async function getStripeApiKey() {
     try {
       const token = localStorage.getItem("token");
+
+      // Check if the token exists and is valid
+      if (!token) {
+        console.log("User is not logged in.");
+        return; // Prevent API call if no token is present
+      }
+
       const config = {
         headers: {
           Authorization: `Bearer ${token}`, // Send the token in the request header
@@ -98,10 +105,12 @@ function App() {
     // Dispatch the action if the component is still mounted
     if (token) {
       store.dispatch(loadUser());
+    } else {
+      console.log("User not authenticated. Cannot fetch Stripe API key.");
     }
 
     // Fetch Stripe API key if the component is still mounted
-    if (isMounted) {
+    if (isMounted && token) {
       getStripeApiKey();
     }
 
