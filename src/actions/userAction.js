@@ -62,7 +62,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
 
     // Optionally reload the page or redirect to a new route
-    window.location.reload();
+    // window.location.reload();
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
   }
