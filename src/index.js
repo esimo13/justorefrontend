@@ -20,12 +20,5 @@ ReactDOM.render(
       <App />
     </AlertProvider>
   </Provider>,
-  // <Provider store={store}>
-  //   <PersistGate loading={null} persistor={persistor}>
-  //     <AlertProvider template={AlertTemplate} {...options}>
-  //       <App />
-  //     </AlertProvider>
-  //   </PersistGate>
-  // </Provider>,
   document.getElementById("root")
 );

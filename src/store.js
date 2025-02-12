@@ -67,33 +67,6 @@ const reducer = {
   review: reviewReducer,
 };
 
-// const rootReducer = combineReducers({
-//   auctions: auctionsReducer,
-//   auctionDetails: auctionDetailsReducer,
-//   newAuction: newAuctionReducer,
-//   auction: auctionReducer,
-//   products: productsReducer,
-//   productDetails: productDetailsReducer,
-//   user: userReducer,
-//   profile: profileReducer,
-//   forgotPassword: forgotPasswordReducer,
-//   cart: cartReducer,
-//   newOrder: newOrderReducer,
-//   myOrders: myOrdersReducer,
-//   orderDetails: orderDetailsReducer,
-//   newReview: newReviewReducer,
-//   newProduct: newProductReducer,
-//   product: productReducer,
-//   allOrders: allOrdersReducer,
-//   order: orderReducer,
-//   allUsers: allUsersReducer,
-//   userDetails: userDetailsReducer,
-//   productReviews: productReviewsReducer,
-//   review: reviewReducer,
-// });
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 // Check if user is in local storage and create user object from that
 const userFromStorage = localStorage.getItem("token")
   ? {
@@ -127,15 +100,3 @@ const store = configureStore({
 });
 
 export default store;
-
-// const store = configureStore({
-//   reducer: persistedReducer,
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: false, // Avoid warnings for non-serializable actions in persist
-//     }),
-// });
-
-// export const persistor = persistStore(store);
-
-// export default store;

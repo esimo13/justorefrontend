@@ -53,14 +53,6 @@ function App() {
 
   const [stripeApiKey, setStripeApiKey] = useState("");
 
-  // async function getStripeApiKey() {
-  //   const { data } = await axios.get(
-  //     "https://justore.onrender.com/api/v1/stripeapikey"
-  //   );
-
-  //   setStripeApiKey(data.stripeApiKey);
-  // }
-
   async function getStripeApiKey() {
     try {
       const token = localStorage.getItem("token");
