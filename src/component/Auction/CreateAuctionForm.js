@@ -35,7 +35,7 @@
 
 //     try {
 //       const response = await fetch(
-//         "http://localhost:3001https://justore.onrender.com/api/v1/admin/auction/new",
+//         "http://localhost:3001/api/v1/admin/auction/new",
 //         {
 //           method: "POST",
 //           body: formDataForUpload,

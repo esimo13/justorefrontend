@@ -69,10 +69,7 @@ function App() {
         },
       };
 
-      const { data } = await axios.get(
-        "https://justore.onrender.com/api/v1/stripeapikey",
-        config
-      );
+      const { data } = await axios.get("/api/v1/stripeapikey", config);
 
       setStripeApiKey(data.stripeApiKey);
     } catch (error) {
