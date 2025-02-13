@@ -55,21 +55,9 @@ function App() {
 
   async function getStripeApiKey() {
     try {
-      const token = localStorage.getItem("token");
-
-      // Check if the token exists and is valid
-      if (!token) {
-        console.log("User is not logged in.");
-        return; // Prevent API call if no token is present
-      }
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`, // Send the token in the request header
-        },
-      };
-
-      const { data } = await axios.get("/api/v1/stripeapikey", config);
+      const { data } = await axios.get(
+        "https://justore.onrender.com/api/v1/stripeapikey"
+      );
 
       setStripeApiKey(data.stripeApiKey);
     } catch (error) {
@@ -81,30 +69,15 @@ function App() {
   }
 
   useEffect(() => {
-    let isMounted = true;
-
-    // Load web fonts
     WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
 
-    const token = localStorage.getItem("token");
+    store.dispatch(loadUser());
 
-    if (token && isMounted) {
-      // Dispatch loadUser() action if token is found
-      dispatch(loadUser());
-    }
-
-    // Fetch Stripe API key if the component is still mounted
-    if (isMounted) {
-      getStripeApiKey();
-    }
-
-    return () => {
-      isMounted = false;
-    };
+    getStripeApiKey();
   }, []);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
