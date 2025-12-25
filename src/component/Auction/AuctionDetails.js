@@ -80,6 +80,40 @@ const AuctionDetails = ({ match }) => {
 
   //sets auction time
 
+  // useEffect(() => {
+  //   localStorage.setItem("auctionEndTime", endTime.toString());
+
+  //   const timer = setInterval(() => {
+  //     setTimeRemaining(calculateTimeRemaining());
+  //   }, 1000);
+
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [endTime]);
+
+  // function getDefaultEndTime() {
+  //   // Calculate your default end time logic here
+  //   // For example, 1 hour from now
+  //   return new Date().getTime() + 1 * 60 * 60 * 1000;
+  // }
+
+  // function calculateTimeRemaining() {
+  //   const now = new Date().getTime();
+  //   const remainingTime = Math.max(0, endTime - now);
+  //   return remainingTime;
+  // }
+
+  // const formatTime = (milliseconds) => {
+  //   const seconds = Math.floor((milliseconds / 1000) % 60);
+  //   const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
+  //   const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
+
+  //   return { hours, minutes, seconds };
+  // };
+
+  // const { hours, minutes, seconds } = formatTime(timeRemaining);
+
   //sets auction time
 
   const handleBidClick = () => {
@@ -189,7 +223,7 @@ const timeBoxStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  background: "rgb(71, 187, 255)", // Set the box background color to orange
+  background: "tomato", // Set the box background color to orange
   borderRadius: "5px",
   fontWeight: "bold", // Set font weight to bold
   margin: "0 5px", // Add margin for spacing

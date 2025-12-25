@@ -1,5 +1,5 @@
 .banner {
-  background-image: url("../../images/Homepage.jfif");
+  background-image: url("../../images/cover.jfif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,10 +16,6 @@
   margin: 5vmax;
 
   font: 600 2.5vmax "Roboto";
-}
-.banner > h2 {
-  font: 400 2vmax "Roboto";
-  margin-top: 5vmax;
 }
 
 .banner > p {
@@ -110,7 +106,7 @@
 
 .productCard > span {
   margin: 0.5vmax;
-  color: rgb(71, 187, 255);
+  color: tomato;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 1vmax;
 }

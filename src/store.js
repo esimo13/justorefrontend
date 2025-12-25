@@ -1,4 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 import {
   newProductReducer,
   newReviewReducer,
@@ -32,19 +34,13 @@ import {
   orderDetailsReducer,
   orderReducer,
 } from "./reducers/orderReducer";
-// Persist configuration
-// const persistConfig = {
-//   key: "root", // Key to store the state in storage
-//   storage, // Storage to use (localStorage)
-//   whitelist: ["user", "cart"], // Only persist the user and cart state
-// };
 
-// Combine all reducers
-const reducer = {
+const reducer = combineReducers({
   auctions: auctionsReducer,
   auctionDetails: auctionDetailsReducer,
   newAuction: newAuctionReducer,
   auction: auctionReducer,
+  //product
   products: productsReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
@@ -63,38 +59,53 @@ const reducer = {
   userDetails: userDetailsReducer,
   productReviews: productReviewsReducer,
   review: reviewReducer,
-};
+});
 
-// Check if user is in local storage and create user object from that
-const userFromStorage = localStorage.getItem("token")
-  ? {
-      token: localStorage.getItem("token"),
-      isAuthenticated: true,
-      user: {},
-    }
-  : {
-      isAuthenticated: false,
-      user: null,
-      token: null,
-    };
-
-// Initial state
 let initialState = {
   cart: {
-    cartItems: localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
-      : [],
-    shippingInfo: localStorage.getItem("shippingInfo")
-      ? JSON.parse(localStorage.getItem("shippingInfo"))
-      : {},
+    // Cart is scoped per-user (or guest). We don't know the user at store init,
+    // so default to the guest scope (and migrate legacy keys if present).
+    cartItems: (() => {
+      const guestKey = "cartItems:guest";
+      const legacyKey = "cartItems";
+      try {
+        const guest = localStorage.getItem(guestKey);
+        if (guest) return JSON.parse(guest);
+        const legacy = localStorage.getItem(legacyKey);
+        if (legacy) {
+          const parsed = JSON.parse(legacy);
+          localStorage.setItem(guestKey, JSON.stringify(parsed));
+          localStorage.removeItem(legacyKey);
+          return parsed;
+        }
+      } catch (e) {}
+      return [];
+    })(),
+    shippingInfo: (() => {
+      const guestKey = "shippingInfo:guest";
+      const legacyKey = "shippingInfo";
+      try {
+        const guest = localStorage.getItem(guestKey);
+        if (guest) return JSON.parse(guest);
+        const legacy = localStorage.getItem(legacyKey);
+        if (legacy) {
+          const parsed = JSON.parse(legacy);
+          localStorage.setItem(guestKey, JSON.stringify(parsed));
+          localStorage.removeItem(legacyKey);
+          return parsed;
+        }
+      } catch (e) {}
+      return {};
+    })(),
   },
-  user: userFromStorage, // Initialized user state
 };
 
-// Create the Redux store with combined reducers, initial state, and middleware
-const store = configureStore({
+const middleware = [thunk];
+
+const store = createStore(
   reducer,
-  preloadedState: initialState,
-});
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
 export default store;

@@ -33,7 +33,7 @@
 
 .aboutSectionContainer > h1 {
   font: 400 3vmax "Roboto";
-  color: rgb(71, 187, 255);
+  color: tomato;
   margin: 2vmax;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .youtubeSvgIcon {
-  color: rgb(202, 45, 36);
+  color: tomato;
 }
 
 .instagramSvgIcon {
