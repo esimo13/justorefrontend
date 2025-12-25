@@ -41,8 +41,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
-// User reducer to manage login, register, load user and logout actions
-export const userReducer = (state = { user: null }, action) => {
+export const userReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
@@ -103,7 +102,6 @@ export const userReducer = (state = { user: null }, action) => {
   }
 };
 
-// Profile reducer to handle updating user profile and password
 export const profileReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_PROFILE_REQUEST:
@@ -166,7 +164,6 @@ export const profileReducer = (state = {}, action) => {
   }
 };
 
-// Forgot Password reducer to manage the password reset process
 export const forgotPasswordReducer = (state = {}, action) => {
   switch (action.type) {
     case FORGOT_PASSWORD_REQUEST:
@@ -209,13 +206,13 @@ export const forgotPasswordReducer = (state = {}, action) => {
   }
 };
 
-// All Users reducer to manage fetching all users
 export const allUsersReducer = (state = { users: [] }, action) => {
   switch (action.type) {
     case ALL_USERS_REQUEST:
       return {
         ...state,
         loading: true,
+        users: state.users || [],
       };
     case ALL_USERS_SUCCESS:
       return {
@@ -228,6 +225,7 @@ export const allUsersReducer = (state = { users: [] }, action) => {
       return {
         ...state,
         loading: false,
+        users: state.users || [],
         error: action.payload,
       };
 
@@ -242,7 +240,6 @@ export const allUsersReducer = (state = { users: [] }, action) => {
   }
 };
 
-// User Details reducer to fetch user details
 export const userDetailsReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:

@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import { CgMouse } from "react-icons/all";
 import "./Home.css";
 import ProductCard from "./ProductCard.js";
 import MetaData from "../layout/MetaData";
@@ -29,11 +30,13 @@ const Home = () => {
           <MetaData title="ECOMMERCE" />
 
           <div className="banner">
-            <h2>Welcome to Ecommerce</h2>
+            <p>Welcome to Ecommerce</p>
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
             <a href="#container">
-              <button>Scroll</button>
+              <button>
+                Scroll <CgMouse />
+              </button>
             </a>
           </div>
 
