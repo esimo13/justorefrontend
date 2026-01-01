@@ -107,7 +107,7 @@ function App() {
     <Router>
       <Header />
 
-      {isAuthenticated && <UserOptions user={user} />}
+      {isAuthenticated && user && <UserOptions user={user} />}
 
       <Switch>
         <Route exact path="/" component={Home} />

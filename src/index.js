@@ -3,9 +3,16 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store";
+import axios from "axios";
 
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+
+// Production: Vercel cannot use CRA "proxy". Point API calls to Render via REACT_APP_API_URL.
+// Example: REACT_APP_API_URL=https://your-backend.onrender.com
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || "";
+// Auth in this app is cookie-based; cross-site requires backend CORS+cookies configured.
+axios.defaults.withCredentials = true;
 
 // Dev-only: ignore uncaught errors coming from browser extensions (e.g. MetaMask).
 // CRA's error overlay will otherwise show a full-screen runtime error for issues that
