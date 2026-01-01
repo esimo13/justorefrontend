@@ -2,6 +2,7 @@ import React from "react";
 import { ReactNavbar } from "overlay-navbar";
 import logo from "../../../images/logo.png";
 import { useSelector } from "react-redux";
+import { FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 
 const Header = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -34,6 +35,10 @@ const Header = () => {
     searchIcon: true,
     cartIcon: true,
     profileIcon: true,
+
+    SearchIconElement: FiSearch,
+    CartIconElement: FiShoppingCart,
+    ProfileIconElement: FiUser,
 
     searchIconUrl: "/search",
     cartIconUrl: "/cart",
