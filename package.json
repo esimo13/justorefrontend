@@ -35,8 +35,8 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "build": "cross-env SKIP_PREFLIGHT_CHECK=true NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -59,6 +59,9 @@
     ]
   },
   "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
   "engines": {
     "node": "20.x"
   }
