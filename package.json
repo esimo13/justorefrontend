@@ -14,8 +14,8 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "chart.js": "^3.5.1",
-    "country-state-city": "^3.0.1",
-    "overlay-navbar": "^1.0.4",
+    "country-state-city": "2.2.0",
+    "overlay-navbar": "1.2.3",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
@@ -60,7 +60,8 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "webpack": "4.44.2"
   },
   "engines": {
     "node": "20.x"
